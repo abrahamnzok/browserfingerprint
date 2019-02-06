@@ -1,5 +1,5 @@
-# todo-app
-It is an easy project to practice the integration between vue, vuex and Element.ui. 
+# TODO APP 
+It is a practical project writtend in vuejs and node coupled with browserfingerprinting. 
 
 ###### Demo: https://oussamaalouat.github.io/vue-todo-app/
 
