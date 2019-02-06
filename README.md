@@ -1,7 +1,7 @@
 # TODO APP 
 It is a practical project writtend in vuejs and node coupled with browserfingerprinting. 
 
-###### Demo: https://oussamaalouat.github.io/vue-todo-app/
+###### Demo: url here
 
 ## Project setup
 ```
