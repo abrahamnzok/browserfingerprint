@@ -1,8 +1,8 @@
 const knex = require('../knex');
 
 createHandler = async (fingerprint) => {
-    await knex('fingerprintable').insert({
-        value: fingerprint
+    return await knex('fingerprintdata').insert({
+        keys: fingerprint
     });
 };
 
