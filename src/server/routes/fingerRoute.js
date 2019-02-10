@@ -8,13 +8,7 @@ create = async (req, res) => {
     return res.status(200);
 };
 
-display = async (req, res) => {
-    const {fingerprint} = req.body;
-    await res.send(fingerprint);
-};
 
 
-router.get('/create', create);
-router.post('/display', display);
-
+router.post('/create', create);
 module.exports = router;
