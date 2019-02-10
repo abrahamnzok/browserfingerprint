@@ -8,6 +8,7 @@
     import Activity from "./components/Activity";
     import Crypto from "crypto-js";
     import ClientJS from "clientjs";
+    import axios from 'axios';
 
     export default {
         components: {Activity},
@@ -21,6 +22,13 @@
             const client = new ClientJS();
             this.browserInfo = client.getResult();
             this.fingerprint = Crypto.SHA256(this.browserInfo).toString();
+            axios({
+                method:'post',
+                url:'http://localhost:3300/fingerprint/create',
+                data: {
+                    fingerprint : this.fingerprint
+                }
+            })
         }
     }
 
