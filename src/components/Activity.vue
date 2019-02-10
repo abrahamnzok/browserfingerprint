@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <h1>ToDo APP</h1>
+        <h1>Hash and Collisions</h1>
         <div v-if="isEmpty">
             <el-alert
                     title="There are not activities at this moment"
