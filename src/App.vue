@@ -1,13 +1,27 @@
 <template>
-  <div>
-    <Activity></Activity>
-  </div>
+    <div>
+        <Activity></Activity>
+    </div>
 </template>
 
 <script>
-  import Activity from "./components/Activity";
-  export default {
-      components: {Activity}
-  }
+    import Activity from "./components/Activity";
+    import Crypto from "crypto-js";
+    import ClientJS from "clientjs";
+
+    export default {
+        components: {Activity},
+        data() {
+            return {
+                browserInfo : null,
+                fingerprint: null,
+            }
+        },
+        created() {
+            const client = new ClientJS();
+            this.browserInfo = client.getResult();
+            this.fingerprint = Crypto.SHA256(this.browserInfo).toString();
+        }
+    }
 
 </script>
