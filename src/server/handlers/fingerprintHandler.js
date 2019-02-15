@@ -1,25 +1,32 @@
 const knex = require('../knex');
-const _ = require('lodash');
+const {isFingerHashPrintUnique, areFingerPrintsEqual, renderFingerprint } = require('../utils/utils');
 const timestamp = require('time-stamp');
 
 createHandler = async (fingerprintHash, fingerprint) => {
     return await knex('fingerprintdata').insert({
-        keys: fingerprintHash,
+        key: fingerprintHash,
         fingerprint: fingerprint,
-        timestamp: timestamp.utc()
+        timestamp: timestamp.utc(),
     });
 };
 
-doesExist = async (fingerprint) => {
+doesFingerPrintHashExist = async (fingerprintHash) => {
     const result = await knex('fingerprintdata').where({
-        keys: fingerprint
-    }).select('keys');
-    const data  = _.head(result);
-    const dbfingerprint = data === undefined ? false : data.key;
-    return dbfingerprint === false ? false : _.isEqual(dbfingerprint, fingerprint);
+        key: fingerprintHash
+    }).select('key');
+    return isFingerHashPrintUnique(result, fingerprintHash)
+};
+
+isCollision =  async (fingerprintHash, newFingerprint) => {
+    const result = await knex('fingerprintdata').where({
+        key : fingerprintHash
+    }).select('fingerprint');
+    const fingerprint = renderFingerprint(result);
+    return areFingerPrintsEqual(fingerprint, newFingerprint) ;
 };
 
 module.exports = {
     createHandler: createHandler,
-    doesExist: doesExist,
+    doesExist: doesFingerPrintHashExist,
+    isCollision : isCollision
 };
