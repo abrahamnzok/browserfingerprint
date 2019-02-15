@@ -7,6 +7,8 @@ createHandler = async (fingerprintHash, fingerprint) => {
         key: fingerprintHash,
         fingerprint: fingerprint,
         timestamp: timestamp.utc(),
+        collisions: 0,
+        visits: 0
     });
 };
 
