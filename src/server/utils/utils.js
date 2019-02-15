@@ -16,6 +16,7 @@ renderKey = (result) => {
     return data === undefined ? false : data.key;
 };
 
+
 areFingerPrintsEqual = (fingerprintA, fingerprintB) => {
     return _.isEqual(fingerprintA, fingerprintB);
 };

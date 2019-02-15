@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const {createHandler, doesExist, isCollision} = require('../handlers/fingerprintHandler');
+const {createHandler, doesFingerPrintHashExist,handleCollision} = require('../handlers/fingerprintHandler');
 
 create = async (req, res) => {
     const {fingerprintHash, fingerprint} = req.body;
     const fingerPrintExists = await doesFingerPrintHashExist(fingerprintHash);
+    await handleCollision(fingerprintHash, fingerprint);
     if(!fingerPrintExists) {
         createHandler(fingerprintHash, fingerprint);
         return res.sendStatus(200);
