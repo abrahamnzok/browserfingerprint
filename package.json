@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start-db": "docker-compose start db",
-    "backend": "node src/server/app.js",
+    "backend": "node_modules/.bin/nodemon src/server/app.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
   },
@@ -14,13 +14,14 @@
     "clientjs": "^0.1.11",
     "cors": "^2.8.5",
     "crypto-js": "^3.1.9-1",
+    "detect-browser": "git+https://github.com/abrahamnzok/detect-browser.git#master",
     "dns": "^0.2.2",
     "element-ui": "^2.4.11",
     "express": "^4.16.4",
     "knex": "^0.16.3",
     "lodash": "latest",
     "moment": "^2.23.0",
-    "detect-browser": "git+https://github.com/abrahamnzok/detect-browser.git#master",
+    "mongodb": "^3.1.13",
     "mssql": "^4.3.1",
     "pg": "^7.8.0",
     "pg-hstore": "^2.3.2",
@@ -35,6 +36,7 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.2.0",
     "@vue/cli-service": "^3.2.0",
+    "nodemon": "^1.18.10",
     "vue-template-compiler": "^2.5.17"
   },
   "postcss": {
