@@ -20,6 +20,7 @@
     "knex": "^0.16.3",
     "lodash": "latest",
     "moment": "^2.23.0",
+    "detect-browser": "git+https://github.com/abrahamnzok/detect-browser.git#master",
     "mssql": "^4.3.1",
     "pg": "^7.8.0",
     "pg-hstore": "^2.3.2",

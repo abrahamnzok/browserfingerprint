@@ -5,9 +5,9 @@
 </template>
 
 <script>
-    import Activity from "./components/Activity";
-    import Crypto from "crypto-js";
-    import ClientJS from "clientjs";
+    import Activity from './components/Activity';
+    import Crypto from 'crypto-js';
+    import {getBrowser} from 'detect-browser';
     import axios from 'axios';
 
     export default {
@@ -15,18 +15,19 @@
         data() {
             return {
                 browserInfo : null,
-                fingerprint: null,
+                fingerprintHash: null,
             }
         },
         created() {
-            const client = new ClientJS();
-            this.browserInfo = client.getResult();
-            this.fingerprint = Crypto.SHA256(this.browserInfo).toString();
+            this.browserInfo = getBrowser();
+            console.log(this.browserInfo);
+            this.fingerprintHash = Crypto.SHA384(this.browserInfo).toString();
             axios({
                 method:'post',
                 url:'http://localhost:3300/fingerprint/create',
                 data: {
-                    fingerprint : this.fingerprint
+                    fingerprint : this.browserInfo,
+                    fingerprintHash : this.fingerprintHash
                 }
             })
         }
