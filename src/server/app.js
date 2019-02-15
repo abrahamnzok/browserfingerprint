@@ -11,7 +11,7 @@ app.use(cors({
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
 }));
 
-connect({url: 'mongodb://localhost:33300'}, {useNewUrlParser: true}).then(response => {
+connect().then(() => {
     console.log(`Connecting to mongodb server on port 33300`)
 });
 

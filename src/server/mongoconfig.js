@@ -1,14 +1,14 @@
 const mongo = require('mongodb').MongoClient;
 
-client = (config, options) => {
-    return new mongo(config.url, options);
+client = () => {
+    return new mongo(process.env.MONGOHOST, {useNewUrlParser: process.env.useNewUrlParser});
 };
 
-connect = async (config, options) => {
-  await client(config, options).connect();
+connect = async () => {
+    await client().connect();
 };
 
 module.exports = {
-    client : client,
+    client: client,
     connect: connect
 };
