@@ -27,25 +27,22 @@ isCollision =  async (fingerprintHash, currentFingerPrint) => {
     return areFingerPrintsEqual(fingerprint, currentFingerPrint) ;
 };
 
-handleCollision = async (fingerPrintHash, currentFingerPrint) => {
-  const fingerPrintExist = await doesFingerPrintHashExist(fingerPrintHash);
-  const collision = await isCollision(fingerPrintHash, currentFingerPrint);
-  if( fingerPrintExist) {
-      if(!collision) {
-          console.log(collision);
-          await knex('fingerprintdata').where({
-              key: fingerPrintHash
-          }).increment('collisions', 1)
-      }else{
-          await knex('fingerprintdata').where({
-              key: fingerPrintHash
-          }).increment('visits', 1)
-      }
-  }
+incrementHashCollision = async (fingerPrintHash) => {
+    await knex('fingerprintdata').where({
+        key: fingerPrintHash
+    }).increment('collisions', 1)
+};
+
+incrementVisit = async (fingerPrintHash) => {
+    await knex('fingerprintdata').where({
+        key: fingerPrintHash
+    }).increment('visits', 1);
 };
 
 module.exports = {
     createHandler: createHandler,
     doesFingerPrintHashExist: doesFingerPrintHashExist,
-    handleCollision : handleCollision
+    isCollision : isCollision,
+    incrementHashCollision : incrementHashCollision,
+    incrementVisits : incrementVisits
 };
