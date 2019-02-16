@@ -1,5 +1,5 @@
 module.exports = {
-    baseUrl: process.env.NODE_ENV === 'production'
-        ? '/vue-todo-app/'
-        : '/'
-}
+    baseUrl: process.env.NODE_ENV === 'development'
+        ? '/'
+        : '/hash-collisions'
+};

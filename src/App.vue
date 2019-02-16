@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Activity></Activity>
+        <router-view/>
     </div>
 </template>
 
