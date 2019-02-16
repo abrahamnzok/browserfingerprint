@@ -8,40 +8,40 @@
 <script>
     import Chart from 'chart.js';
     import {getDatasets, getOptions} from '../server/utils/dataviz';
-    import axios from 'axios';
+    import * as axios from "axios";
 
     export default {
         name: "Dataviz",
-        data : () => {
+        data: () => {
             return {
-              options: [],
-              datasets: [],
+                options: [],
+                datasets: [],
             }
         },
         methods: {
-            createBar: (id) => {
+            createBar: (id, datasets, options) => {
                 const properties = {
                     type: 'bar',
+                    data: datasets,
+                    options: options,
                 };
                 const ctx = document.getElementById(id).getContext('2d');
                 new Chart(ctx, properties);
             },
         },
-        created : async () => {
-           try {
-               const results =  await axios({
-                   method : 'get',
-                   url : 'http://localhost:3300/viz'
-               });
-               this.datasets = getDatasets(results.data);
-               this.options = getOptions(results);
-           }catch (e) {
-               console.log(e.stack);
-           }
-
+        async created() {
+            try {
+                const results = await axios({
+                    method: 'get',
+                    url: 'http://localhost:3300/viz'
+                });
+                this.datasets = getDatasets(results.data);
+                this.options = getOptions();
+                this.createBar('dataviz', this.datasets, this.options);
+            } catch (e) {
+                console.log(e.stack);
+            }
         },
-        mounted : () => {
-        }
     }
 </script>
 
