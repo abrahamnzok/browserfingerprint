@@ -11,7 +11,6 @@ create = async (req, res) => {
         return res.sendStatus(200);
     }else{
         if(!collision) {
-            console.log(collision);
             await incrementHashCollision(fingerprintHash);
         }else{
             await incrementVisit(fingerprintHash)
