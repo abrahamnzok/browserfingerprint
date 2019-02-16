@@ -44,5 +44,5 @@ module.exports = {
     doesFingerPrintHashExist: doesFingerPrintHashExist,
     isCollision : isCollision,
     incrementHashCollision : incrementHashCollision,
-    incrementVisits : incrementVisits
+    incrementVisit : incrementVisit
 };
