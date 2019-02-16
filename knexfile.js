@@ -10,6 +10,9 @@ module.exports = {
       user : process.env.PG_USER,
       password : process.env.PG_PWD,
     },
+    migrations: {
+      directory: './migrations'
+    }
   },
   production: {
     client: 'pg',
@@ -20,7 +23,7 @@ module.exports = {
       password : process.env.PG_PWD,
     },
     migrations: {
-      tableName: 'knex_migrations'
+      directory: './migrations',
     }
   }
 
