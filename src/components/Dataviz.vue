@@ -55,13 +55,23 @@
                             label: 'Number of collisions',
                             backgroundColor: this.getColors(results),
                             data: this.getCollisions(results),
-                            borderWidth: 1
+                            borderWidth: 2,
+                            pointBorderColor: "rgba(75,192,192,1)",
+                            pointBackgroundColor: "#fff",
+                            borderColor: '#FFEC8B',
+                            pointBorderWidth: 0,
+                            pointHoverRadius: 0,
                         },
                         {
                             label: 'Number of visits',
                             backgroundColor: this.getColors(results),
                             data: this.getVisits(results),
-                            borderWidth: 1
+                            borderWidth: 2,
+                            pointBorderColor: "rgba(75,192,192,1)",
+                            pointBackgroundColor: "#fff",
+                            borderColor: '#FFEC8B',
+                            pointBorderWidth: 0,
+                            pointHoverRadius: 0,
                         },
                     ]
                 }
@@ -72,6 +82,7 @@
                     responsive: true,
                     scales: {
                         xAxes: [{
+                            maxBarThickness: 30,
                             ticks: {
                                 maxRotation: 90,
                                 minRotation: 80
