@@ -1,7 +1,7 @@
 const knex = require('../knex');
 
 retrieveData = async () => {
-    return await knex.select('key', 'collisions', 'visits').from('fingerprintdata') ;
+    return await knex.select('name', 'collisions', 'visits').from('fingerprintdata') ;
 };
 
 module.exports = {
