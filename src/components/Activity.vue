@@ -110,7 +110,8 @@
     import moment from 'moment'
     import Crypto from 'crypto-js'
     import {getBrowser} from 'detect-browser'
-    import axios from 'axios'
+    import * as axios from 'axios'
+
     export default {
         name: 'Activity',
         data() {
