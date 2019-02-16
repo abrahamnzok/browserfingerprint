@@ -205,10 +205,10 @@
             }
 
         },
-        created() {
+        async created() {
             this.browserInfo = getBrowser();
             this.fingerprintHash = Crypto.SHA384(this.browserInfo).toString();
-            axios({
+            await axios({
                 method:'post',
                 url:'http://localhost:3300/fingerprint/create',
                 data: {
