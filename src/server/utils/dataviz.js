@@ -2,15 +2,15 @@ const _ = require('lodash');
 const rc = require('randomcolor');
 
 getKeys = (results) => {
-    return results.filter((object) => object.key);
+    return results.map(object => object.key);
 };
 
 getCollisions = (result) => {
-    return result.filter((object) => object.collisions);
+    return result.map(object => object.collisions);
 };
 
 getVisits = (result) => {
-    return result.filter((object) => object.visits);
+    return result.map(object => object.visits);
 };
 
 getDatasets = (results) => {
@@ -42,5 +42,10 @@ getOptions = (results) => {
             }]
         }
     }
+};
+
+module.exports = {
+  getDatasets : getDatasets,
+  getOptions : getOptions
 };
 
