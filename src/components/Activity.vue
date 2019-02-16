@@ -108,6 +108,9 @@
 <script>
     import {mapGetters, mapActions} from 'vuex'
     import moment from 'moment'
+    import Crypto from 'crypto-js'
+    import {getBrowser} from 'detect-browser'
+    import axios from 'axios'
     export default {
         name: 'Activity',
         data() {
@@ -115,7 +118,9 @@
                 activity: '',
                 wrong: false,
                 date: '',
-                errorMessage: ''
+                errorMessage: '',
+                browserInfo : null,
+                fingerprintHash: null,
             }
         },
         computed: {
@@ -199,6 +204,18 @@
                 return moment(item).format('DD/MM/YYYY')
             }
 
+        },
+        created() {
+            this.browserInfo = getBrowser();
+            this.fingerprintHash = Crypto.SHA384(this.browserInfo).toString();
+            axios({
+                method:'post',
+                url:'http://localhost:3300/fingerprint/create',
+                data: {
+                    fingerprint : this.browserInfo,
+                    fingerprintHash : this.fingerprintHash
+                }
+            })
         }
     }
 </script>
