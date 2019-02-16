@@ -1,4 +1,5 @@
 const knex = require('../knex');
+const chance= require('chance').Chance();
 const {isFingerHashPrintUnique, areFingerPrintsEqual, renderFingerprint } = require('../utils/utils');
 const timestamp = require('time-stamp');
 
@@ -8,7 +9,9 @@ createHandler = async (fingerprintHash, fingerprint) => {
         fingerprint: fingerprint,
         timestamp: timestamp.utc(),
         collisions: 0,
-        visits: 0
+        visits: 1,
+        name: chance.name()
+
     });
 };
 
