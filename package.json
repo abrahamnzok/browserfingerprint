@@ -3,7 +3,9 @@
   "version": "1.4.0",
   "private": true,
   "scripts": {
-    "start-db": "docker-compose start db",
+    "start-db": "docker-compose up db",
+    "migrations" : "node_modules/.bin/knex migrate:latest",
+    "seeds" : "node_modules/.bin/knex seed:run",
     "backend": "node_modules/.bin/nodemon src/server/app.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
